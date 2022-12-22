@@ -3,13 +3,18 @@ using Serilog;
 try
 {
     var builder = WebApplication.CreateBuilder(args);
-    var logger = new LoggerConfiguration()
-                        .ReadFrom.Configuration(builder.Configuration)
-                        .Enrich.FromLogContext()
-                        .CreateLogger();
-    builder.Host.UseSerilog(logger);
+    //var logger = new LoggerConfiguration()
+    //                    .ReadFrom.Configuration(builder.Configuration)
+    //                    .Enrich.FromLogContext()
+    //                    .CreateLogger();
+    //builder.Host.UseSerilog(logger);
 
-    // builder.Host.UseSerilogPlus();
+
+    Log.Logger = new LoggerConfiguration()
+                    .ReadFrom.Configuration(builder.Configuration)
+                    //.SetSerilogPlusDefaultConfiguration()
+                    .CreateLogger();
+    builder.Host.UseSerilogPlus();
 
     // more configuration
 
