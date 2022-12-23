@@ -4,27 +4,10 @@
 [ApiController]
 public class MathController : ControllerBase
 {
-    private readonly ILogger<MathController> _logger;
-
-    public MathController(ILogger<MathController> logger)
-    {
-        _logger = logger;
-    }
 
     [HttpGet]
-    public decimal Divide(decimal a, decimal b)
+    public decimal Divide(decimal Numerator=5, decimal Denominator=1)
     {
-        return (a / b);
-        //try
-        //{
-        //    return (a / b);
-        //}
-        //catch (Exception ex)
-        //{
-        //    _logger.LogInformation("Error in Divide Method - Value of a is {a}", a);
-        //    _logger.LogInformation("Error in Divide Method - Value of b is {b}", b);
-        //    _logger.LogError(ex, "Error in Divide Method");
-        //    return 0;
-        //}
+        return (Numerator / Denominator);
     }
 }
