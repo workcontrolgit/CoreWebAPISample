@@ -1,24 +1,15 @@
+using AutoWrapper;
 using Serilog;
 
 try
 {
     var builder = WebApplication.CreateBuilder(args);
-    //var logger = new LoggerConfiguration()
-    //                    .ReadFrom.Configuration(builder.Configuration)
-    //                    .Enrich.FromLogContext()
-    //                    .CreateLogger();
-    //builder.Host.UseSerilog(logger);
-
 
     Log.Logger = new LoggerConfiguration()
                     .ReadFrom.Configuration(builder.Configuration)
-                    //.SetSerilogPlusDefaultConfiguration()
                     .Enrich.FromLogContext()
                     .CreateLogger();
-    // builder.Host.UseSerilogPlus();
     builder.Host.UseSerilog(Log.Logger);
-
-    // more configuration
 
     // Add services to the container.
 
@@ -29,11 +20,6 @@ try
 
 
     var app = builder.Build();
-    //app.UseSerilogPlusRequestLogging();
-    // app.UseSerilogPlusRequestLogging();
-    // app.UseSerilogRequestLogging
-
-    // more configs
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
@@ -47,6 +33,8 @@ try
     app.UseAuthorization();
 
     app.MapControllers();
+    app.UseApiResponseAndExceptionWrapper();
+
 
 
     app.Run();

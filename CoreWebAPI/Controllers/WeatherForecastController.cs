@@ -22,7 +22,7 @@ namespace CoreWebAPI.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
 
-            throw new Exception("Exception while Get Weather Forecast.");
+            // throw new Exception("Exception while Get Weather Forecast.");
 
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
