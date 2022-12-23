@@ -13,8 +13,10 @@ try
     Log.Logger = new LoggerConfiguration()
                     .ReadFrom.Configuration(builder.Configuration)
                     //.SetSerilogPlusDefaultConfiguration()
+                    .Enrich.FromLogContext()
                     .CreateLogger();
-    builder.Host.UseSerilogPlus();
+    // builder.Host.UseSerilogPlus();
+    builder.Host.UseSerilog(Log.Logger);
 
     // more configuration
 
@@ -27,7 +29,9 @@ try
 
 
     var app = builder.Build();
-    app.UseSerilogRequestLogging();
+    //app.UseSerilogPlusRequestLogging();
+    // app.UseSerilogPlusRequestLogging();
+    // app.UseSerilogRequestLogging
 
     // more configs
 
