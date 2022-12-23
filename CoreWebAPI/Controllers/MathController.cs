@@ -6,7 +6,7 @@ public class MathController : ControllerBase
 {
 
     [HttpGet]
-    public decimal Divide(decimal Numerator, decimal Denominator)
+    public decimal Divide(decimal Numerator=5, decimal Denominator=1)
     {
         return (Numerator / Denominator);
     }
