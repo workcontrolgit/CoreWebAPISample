@@ -1,5 +1,4 @@
 using AutoWrapper;
-using CoreWebAPI.Extensions;
 using Serilog;
 
 try
@@ -34,7 +33,6 @@ try
     app.UseAuthorization();
 
     app.MapControllers();
-    app.UseErrorHandlingMiddleware();
     app.UseApiResponseAndExceptionWrapper();
 
 
